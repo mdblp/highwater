@@ -84,11 +84,21 @@ module.exports = (function() {
   // The local host to publish to discovery
   env.publishHost = config.fromEnvironment('PUBLISH_HOST');
 
-  // the base URL of KISSmetrics
-  env.metricshost = config.fromEnvironment('KISSMETRICS_URL', 'http://trk.kissmetrics.com/e');
+  // What do we do with metrics
+  // file, kiss or all
+  env.metrics = config.fromEnvironment('METRICS', 'all');
 
-  // the service token for KISSmetrics
-  env.apikey = config.fromEnvironment('METRICS_APIKEY');
+  env.file = {
+    name: config.fromEnvironment('METRICS_FILENAME', 'file.log'),
+  };
+
+  env.kiss = {
+    // the base URL of KISSmetrics
+    metricshost: config.fromEnvironment('KISSMETRICS_URL', 'http://trk.kissmetrics.com/e'),
+
+    // the service token for KISSmetrics
+    apikey: config.fromEnvironment('METRICS_APIKEY')
+  };
 
   env.ucsf = {
     // the service token for KISSmetrics for the ucsf pilot

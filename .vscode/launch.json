@@ -1,0 +1,32 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "6.10.3",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Highwater",
+            "program": "${workspaceFolder}\\lib\\index.js",
+            "outFiles": [
+                "${workspaceFolder}/**/*.js"
+            ],
+            // "runtimeExecutable": "${env:HOME}/.nvm/versions/node/v0.12.18/bin/node",
+            "env": {
+                "PORT":"9191",
+                "LOG_LEVEL":"debug",
+                "SALT_DEPLOY": "gf78fSEI7tOQQP9xfXMO9HfRyMnW4Sx88Q",
+                "DISCOVERY_HOST":"localhost:8000",
+                "PUBLISH_HOST":"localhost:8000",
+                "SERVER_SECRET": "This needs to be the same secret everywhere. YaHut75NsK1f9UKUXuWqxNN0RUwHFBCy",
+                "SERVICE_NAME": "highwater",
+                "USER_API_SERVICE": "{\"type\": \"static\", \"hosts\": [{\"protocol\": \"http\", \"host\": \"localhost:9107\"}]}",
+                "METRICS_APIKEY": "",
+                "METRICS_UCSF_APIKEY": "",
+                "METRICS": "file",
+                "METRICS_FILENAME": "log/file.log"
+            }
+       }
+    ]
+}
