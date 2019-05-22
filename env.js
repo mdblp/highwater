@@ -113,6 +113,9 @@ module.exports = (function () {
 
   env.metricsToken = config.fromEnvironment('METRICS_TOKEN', null);
 
+  // Level of logging for deafult logger
+  env.logLevel = config.fromEnvironment('LOG_LEVEL', 'info');
+
   // if this is specified then the noauth endpoint is delivered
   env.noauth = config.fromEnvironment('NOAUTH', false);
 
