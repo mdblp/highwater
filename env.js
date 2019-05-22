@@ -18,18 +18,18 @@
 'use strict';
 
 var fs = require('fs');
+var path = require('path');
 
 var config = require('amoeba').config;
 
-function maybeReplaceWithContentsOfFile(obj, field)
-{
+function maybeReplaceWithContentsOfFile(obj, field) {
   var potentialFile = obj[field];
   if (potentialFile != null && fs.existsSync(potentialFile)) {
     obj[field] = fs.readFileSync(potentialFile).toString();
   }
 }
 
-module.exports = (function() {
+module.exports = (function () {
   var env = {};
 
   // The port to attach an HTTP listener, if null, no HTTP listener will be attached
@@ -88,6 +88,11 @@ module.exports = (function() {
   // file, kiss or all
   env.metrics = config.fromEnvironment('METRICS', 'all');
 
+  let filename = config.fromEnvironment('METRICS_FILENAME', 'file.log');
+  let dir = path.dirname(filename);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
+  }
   env.file = {
     name: config.fromEnvironment('METRICS_FILENAME', 'file.log'),
   };
@@ -103,7 +108,7 @@ module.exports = (function() {
   env.ucsf = {
     // the service token for KISSmetrics for the ucsf pilot
     apikey: config.fromEnvironment('METRICS_UCSF_APIKEY'),
-    whitelist: config.fromEnvironment('METRICS_UCSF_WHITELIST', '').split(',').map(function(e){ return e.trim(); })
+    whitelist: config.fromEnvironment('METRICS_UCSF_WHITELIST', '').split(',').map(function (e) { return e.trim(); })
   };
 
   env.metricsToken = config.fromEnvironment('METRICS_TOKEN', null);
