@@ -10,7 +10,7 @@ COPY package.json package.json
 RUN yarn install && \
     yarn cache clean
 
-RUN chown -R node:node /app 
+RUN chown -R node:node /app
 
 USER node
 
