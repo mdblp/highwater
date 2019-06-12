@@ -87,14 +87,17 @@ module.exports = (function () {
   // What do we do with metrics
   // file, kiss or all
   env.metrics = config.fromEnvironment('METRICS', 'all');
-
-  let filename = config.fromEnvironment('METRICS_FILENAME', 'file.log');
+  let default_filename = 'file.log'
+  let filename = config.fromEnvironment('METRICS_FILENAME', default_filename);
+  if (filename === "") {
+    filename = default_filename;
+  }
   let dir = path.dirname(filename);
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
   }
-  env.file = {
-    name: config.fromEnvironment('METRICS_FILENAME', 'file.log'),
+ env.file = {
+    name: filename,
   };
 
   env.kiss = {
