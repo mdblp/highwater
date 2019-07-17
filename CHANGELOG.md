@@ -1,7 +1,8 @@
 
 # Highwater
 
-Tidepool's metrics endpoint.
+It is the service that receives events from other services. The events are either pushed to KissMetric or written to local files that can then be consumed by external processes such as fileBeat.
+
 
 ## v0.1.3 [2019-07-17]
 

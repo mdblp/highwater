@@ -24,3 +24,22 @@ KISSMetrics whitelist metrics requires that the logging include a key for METRIC
 
 If all three values are missing, then the metrics system is a no-op. This is useful when running a local stack.
 
+## Added
+
+New configuration values have been added to write down the metrics in a file that can then be consumed by an external tool such as filebeat. Here is the list of the new configuration that we can set:
+
+```bash
+# variable to enable metrics features
+# - none: no metrics
+# - kiss: events are sent to 
+# - file: log events to a file
+# - all: file + kiss
+export METRICS="all"
+# path to file that is used to store events when "file" is enabled
+# the folder is not created if it does not exist
+# By default the files are rotated every day and we keep 7 days of history.
+export METRICS_FILENAME="file.log"
+```
+
+Enabling the `file` metrics will create files on the server with the `METRICS_FILENAME` filename. The generated files are automatically rotated every day. They can then be consumed by an external system. Those files contain all the events which are sent to highwater.
+   
