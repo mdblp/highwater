@@ -43,4 +43,5 @@ services:
   - mongodb
 
 script:
+  - npm audit --registry=https://registry.npmjs.org --production
   - ./artifact.sh
