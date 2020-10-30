@@ -3,7 +3,7 @@ It is the service that receives events from other services. The events are eithe
 
 ## Unreleased
 ### Engineering
-- Testiong travis-ci.com 
+- Testing travis-ci.com 
 
 ## 0.1.4 - 2019-12-03  
 ### Other Notes
